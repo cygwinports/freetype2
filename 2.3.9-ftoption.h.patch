@@ -1,0 +1,11 @@
+--- origsrc/freetype-2.3.9/include/freetype/config/ftoption.h	2008-11-05 03:25:14.000000000 -0600
++++ src/freetype-2.3.9/include/freetype/config/ftoption.h	2009-09-13 21:58:51.783796800 -0500
+@@ -315,7 +315,7 @@ FT_BEGIN_HEADER
+   /* This allows FreeType to be used with the PostScript language, using   */
+   /* the GhostScript interpreter.                                          */
+   /*                                                                       */
+-/* #define FT_CONFIG_OPTION_INCREMENTAL */
++#define FT_CONFIG_OPTION_INCREMENTAL
+ 
+ 
+   /*************************************************************************/

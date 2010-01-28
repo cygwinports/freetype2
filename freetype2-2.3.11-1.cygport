@@ -1,0 +1,61 @@
+ORIG_PN="${PN%${PV_MAJ}}"
+
+DESCRIPTION="FreeType font engine"
+HOMEPAGE="http://freetype.sourceforge.net/"
+SRC_URI="mirror://sourceforge/freetype/${ORIG_PN}-${PV}.tar.bz2
+         mirror://sourceforge/freetype/${ORIG_PN}-doc-${PV}.tar.bz2
+         mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2"
+PATCH_URI="mirror://portage/media-libs/${ORIG_PN}/files/${ORIG_PN}-2.3.2-enable-valid.patch
+           2.3.9-ftoption.h.patch"
+
+PKG_NAMES="${PN} ${PN}-demos libfreetype6 libfreetype-devel"
+freetype2_demos_CONTENTS="usr/bin/ft*.exe*"
+libfreetype6_CONTENTS="--exclude=html usr/bin/*.dll usr/share/doc/"
+libfreetype_devel_CONTENTS="usr/bin/*-config usr/include/ usr/lib/
+                            usr/share/aclocal usr/share/doc/${PN}/html/"
+
+DIFF_EXCLUDES='aclocal.m4 configure *.html'
+
+src_compile() {
+	cd ${S}/builds/unix
+	NO_AUTOHEADER=1 cygautoreconf
+
+	mkdir -p ${B}/freetype2
+	lndir ${S} ${B}/freetype2
+	cd ${B}/freetype2
+	CFLAGS+=" -fno-strict-aliasing"
+	CYGCONF_SOURCE=${B}/freetype2
+	cygconf --with-zlib # --srcdir=${B}/freetype2/builds/unix
+	cygmake all
+	cygmake refdoc
+
+	mkdir -p ${B}/ft2demos
+	lndir ${S}/../ft2demos-${PV} ${B}/ft2demos
+	cd ${B}/ft2demos
+	cygmake
+}
+
+src_install() {
+	local d
+
+	cd ${B}/freetype2
+	cyginstall
+
+	cd ${B}/ft2demos
+	dobin bin/*.exe
+
+	cd ${S}/docs
+	dodoc [A-HJ-Z]* *.txt
+
+	docinto html
+	dodoc ft2faq.html
+
+	docinto html/reference
+	dodoc ${B}/freetype2/reference/*
+
+	for d in design glyphs tutorial
+	do
+		docinto html/${d}
+		dodoc ${d}/*
+	done
+}
