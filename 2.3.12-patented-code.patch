@@ -1,0 +1,25 @@
+DO NOT SHIP CODE BUILT WITH THIS PATCH!!!
+
+Subpixel rendering (ClearType) patented by Microsoft until ~2019.
+Bytecode interpreter patented by Apple, already expired in USA.
+
+--- origsrc/freetype-2.3.12/include/freetype/config/ftoption.h	2010-02-09 08:40:56.000000000 -0600
++++ src/freetype-2.3.12/include/freetype/config/ftoption.h	2010-03-02 15:18:04.297329000 -0600
+@@ -93,7 +93,7 @@ FT_BEGIN_HEADER
+   /* This is done to allow FreeType clients to run unmodified, forcing     */
+   /* them to display normal gray-level anti-aliased glyphs.                */
+   /*                                                                       */
+-/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
++#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING
+ 
+ 
+   /*************************************************************************/
+@@ -497,7 +497,7 @@ FT_BEGIN_HEADER
+   /*   Do not #undef this macro here, since the build system might         */
+   /*   define it for certain configurations only.                          */
+   /*                                                                       */
+-/* #define TT_CONFIG_OPTION_BYTECODE_INTERPRETER */
++#define TT_CONFIG_OPTION_BYTECODE_INTERPRETER
+ 
+ 
+   /*************************************************************************/

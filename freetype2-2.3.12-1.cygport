@@ -5,8 +5,7 @@ HOMEPAGE="http://freetype.sourceforge.net/"
 SRC_URI="mirror://sourceforge/freetype/${ORIG_PN}-${PV}.tar.bz2
          mirror://sourceforge/freetype/${ORIG_PN}-doc-${PV}.tar.bz2
          mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2"
-PATCH_URI="mirror://portage/media-libs/${ORIG_PN}/files/${ORIG_PN}-2.3.2-enable-valid.patch
-           2.3.9-ftoption.h.patch"
+PATCH_URI="mirror://portage/media-libs/${ORIG_PN}/files/${ORIG_PN}-2.3.2-enable-valid.patch"
 
 PKG_NAMES="${PN} ${PN}-demos libfreetype6 libfreetype-devel"
 freetype2_demos_CONTENTS="usr/bin/ft*.exe*"
