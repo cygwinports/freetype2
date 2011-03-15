@@ -5,9 +5,14 @@ HOMEPAGE="http://freetype.sourceforge.net/"
 SRC_URI="mirror://sourceforge/freetype/${ORIG_PN}-${PV}.tar.bz2
          mirror://sourceforge/freetype/${ORIG_PN}-doc-${PV}.tar.bz2
          mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2"
-PATCH_URI="mirror://portage/media-libs/${ORIG_PN}/files/${ORIG_PN}-2.3.2-enable-valid.patch"
+PATCH_URI="
+	fedora/freetype-2.2.1-enable-valid.patch
+	fedora/freetype-2.4.2-CVE-2010-3311.patch
+	fedora/0001-Fall-back-to-autohinting-if-a-TTF-OTF-doesn-t-contai.patch
+	fedora/0002-Fix-autohinting-fallback.patch
+"
 
-PKG_NAMES="${PN} ${PN}-demos libfreetype6 libfreetype-devel"
+PKG_NAMES="${PN}-demos libfreetype6 libfreetype-devel"
 freetype2_demos_CONTENTS="usr/bin/ft*.exe*"
 libfreetype6_CONTENTS="--exclude=html usr/bin/*.dll usr/share/doc/"
 libfreetype_devel_CONTENTS="usr/bin/*-config usr/include/ usr/lib/
