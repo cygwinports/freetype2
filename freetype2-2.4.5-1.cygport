@@ -8,8 +8,7 @@ SRC_URI="mirror://sourceforge/freetype/${ORIG_PN}-${PV}.tar.bz2
 PATCH_URI="
 	fedora/freetype-2.2.1-enable-valid.patch
 	fedora/freetype-2.4.2-CVE-2010-3311.patch
-	fedora/0001-Fall-back-to-autohinting-if-a-TTF-OTF-doesn-t-contai.patch
-	fedora/0002-Fix-autohinting-fallback.patch
+	fedora/freetype-2.4.5-CVE-2011-0226.patch
 "
 
 PKG_NAMES="${PN}-demos libfreetype6 libfreetype-devel"

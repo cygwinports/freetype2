@@ -1,5 +1,5 @@
 category: X11
-requires: libfreetype6 zlib-devel
+requires: libfreetype6 libbz2-devel zlib-devel
 external-source: freetype2
 sdesc: "High-quality software font engine (development files)"
 ldesc: "FreeType 2 is a software font engine that is designed to be small,
