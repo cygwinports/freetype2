@@ -7,7 +7,6 @@ SRC_URI="mirror://sourceforge/freetype/${ORIG_PN}-${PV}.tar.bz2
          mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2"
 PATCH_URI="
 	fedora/freetype-2.2.1-enable-valid.patch
-	fedora/freetype-2.4.2-CVE-2010-3311.patch
 "
 
 PKG_NAMES="${PN}-demos libfreetype6 libfreetype-devel"
