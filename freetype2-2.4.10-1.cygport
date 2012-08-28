@@ -1,16 +1,20 @@
 ORIG_PN="${PN%${PV_MAJ}}"
 
-DESCRIPTION="FreeType font engine"
+CATEGORY="X11"
+SUMMARY="FreeType font engine"
+DESCRIPTION="FreeType 2 is a software font engine that is designed to be
+small, efficient, highly customizable and portable while capable of producing
+high-quality output (glyph images)."
 HOMEPAGE="http://freetype.sourceforge.net/"
 SRC_URI="mirror://sourceforge/freetype/${ORIG_PN}-${PV}.tar.bz2
          mirror://sourceforge/freetype/${ORIG_PN}-doc-${PV}.tar.bz2
          mirror://sourceforge/freetype/ft2demos-${PV}.tar.bz2"
 PATCH_URI="
-	fedora/freetype-2.2.1-enable-valid.patch
-	mirror://portage/media-libs/freetype/files/freetype-2.4.9-type1-incremental.patch
+	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.2.1-enable-valid.patch
 "
 
 PKG_NAMES="${PN}-demos libfreetype6 libfreetype-devel"
+freetype2_demos_SUMMARY="${SUMMARY} (demo programs)"
 freetype2_demos_CONTENTS="usr/bin/ft*.exe*"
 libfreetype6_CONTENTS="--exclude=html usr/bin/*.dll usr/share/doc/"
 libfreetype_devel_CONTENTS="usr/bin/*-config usr/include/ usr/lib/
