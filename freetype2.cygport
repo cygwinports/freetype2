@@ -1,5 +1,5 @@
 NAME="freetype2"
-VERSION=2.4.11
+VERSION=2.4.12
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="FreeType font engine"
