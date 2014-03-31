@@ -1,7 +1,7 @@
 NAME="freetype2"
-VERSION=2.4.12
+VERSION=2.5.3
 RELEASE=1
-CATEGORY="X11"
+CATEGORY="Libs"
 SUMMARY="FreeType font engine"
 DESCRIPTION="FreeType 2 is a software font engine that is designed to be
 small, efficient, highly customizable and portable while capable of producing
@@ -13,27 +13,33 @@ SRC_URI="mirror://sourceforge/freetype/freetype-${VERSION}.tar.bz2
 SRC_DIR="freetype-${VERSION}"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.2.1-enable-valid.patch
+	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.4.12-pkgconfig.patch
+	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.5.3-freetype-config-libs.patch
 "
 
-PKG_NAMES="${PN}-demos libfreetype6 libfreetype-devel"
+PKG_NAMES="${NAME}-demos libfreetype6 libfreetype-devel libfreetype-doc"
 freetype2_demos_SUMMARY="${SUMMARY} (demo programs)"
-freetype2_demos_CONTENTS="usr/bin/ft*.exe*"
+freetype2_demos_CONTENTS="usr/bin/ft*.exe* usr/bin/tt*.exe"
 libfreetype6_CONTENTS="--exclude=html usr/bin/*.dll usr/share/doc/"
 libfreetype_devel_CONTENTS="usr/bin/*-config usr/include/ usr/lib/
-                            usr/share/aclocal usr/share/doc/${PN}/html/"
+	usr/share/aclocal/ usr/share/man/man1/freetype-config.1*"
+libfreetype_doc_CATEGORY="Doc"
+libfreetype_doc_CONTENTS="usr/share/doc/${NAME}/html/"
 
 DIFF_EXCLUDES='aclocal.m4 configure *.html'
 
 src_compile() {
 	cd ${S}/builds/unix
-	NO_AUTOHEADER=1 cygautoreconf
+	NO_AUTOHEADER=1 \
+	ACLOCAL_FLAGS="-I ." \
+	cygautoreconf
 
 	mkdir -p ${B}/freetype2
 	lndir ${S} ${B}/freetype2
 	cd ${B}/freetype2
-	CFLAGS+=" -fno-strict-aliasing"
 	CYGCONF_SOURCE=${B}/freetype2
-	cygconf --with-zlib # --srcdir=${B}/freetype2/builds/unix
+	# harfbuzz: new in 2.5.3, circular dep
+	cygconf --with-zlib --with-bzip2 --with-png --without-harfbuzz
 	cygmake all
 	cygmake refdoc
 
@@ -58,10 +64,7 @@ src_install() {
 	docinto html
 	dodoc ft2faq.html
 
-	docinto html/reference
-	dodoc ${B}/freetype2/reference/*
-
-	for d in design glyphs tutorial
+	for d in design glyphs reference tutorial
 	do
 		docinto html/${d}
 		dodoc ${d}/*
