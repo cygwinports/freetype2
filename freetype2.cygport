@@ -1,6 +1,6 @@
 NAME="freetype2"
 VERSION=2.5.4
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="FreeType font engine"
 DESCRIPTION="FreeType 2 is a software font engine that is designed to be
