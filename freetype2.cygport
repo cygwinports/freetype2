@@ -1,6 +1,6 @@
 NAME="freetype2"
-VERSION=2.5.5
-RELEASE=2
+VERSION=2.6.5
+RELEASE=1
 CATEGORY="Libs"
 SUMMARY="FreeType font engine"
 DESCRIPTION="FreeType 2 is a software font engine that is designed to be
@@ -14,7 +14,6 @@ SRC_DIR="freetype-${VERSION}"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.2.1-enable-valid.patch
 	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.5.3-freetype-config-prefix.patch
-	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.5.5-thread-safety.patch?h=f22
 "
 
 PKG_NAMES="${NAME}-demos libfreetype6 libfreetype-devel libfreetype-doc"
