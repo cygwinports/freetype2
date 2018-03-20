@@ -1,5 +1,5 @@
 NAME="freetype2"
-VERSION=2.6.5
+VERSION=2.8.1
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="FreeType font engine"
@@ -12,8 +12,9 @@ SRC_URI="mirror://sourceforge/freetype/freetype-${VERSION}.tar.bz2
          mirror://sourceforge/freetype/ft2demos-${VERSION}.tar.bz2"
 SRC_DIR="freetype-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.2.1-enable-valid.patch
-	http://pkgs.fedoraproject.org/cgit/freetype.git/plain/freetype-2.5.3-freetype-config-prefix.patch
+	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.2.1-enable-valid.patch
+	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.6.5-libtool.patch
+	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.8-getvariation.patch
 "
 
 PKG_NAMES="${NAME}-demos libfreetype6 libfreetype-devel libfreetype-doc"
