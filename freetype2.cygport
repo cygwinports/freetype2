@@ -1,5 +1,5 @@
 NAME="freetype2"
-VERSION=2.8.1
+VERSION=2.9.1
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="FreeType font engine"
@@ -14,15 +14,14 @@ SRC_DIR="freetype-${VERSION}"
 PATCH_URI="
 	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.2.1-enable-valid.patch
 	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.6.5-libtool.patch
-	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.8-getvariation.patch
+	http://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.9-ftsmooth.patch
 "
 
 PKG_NAMES="${NAME}-demos libfreetype6 libfreetype-devel libfreetype-doc"
 freetype2_demos_SUMMARY="${SUMMARY} (demo programs)"
 freetype2_demos_CONTENTS="usr/bin/ft*.exe* usr/bin/tt*.exe"
 libfreetype6_CONTENTS="--exclude=html usr/bin/*.dll usr/share/doc/"
-libfreetype_devel_CONTENTS="usr/bin/*-config usr/include/ usr/lib/
-	usr/share/aclocal/ usr/share/man/man1/freetype-config.1*"
+libfreetype_devel_CONTENTS="usr/include/ usr/lib/ usr/share/aclocal/"
 libfreetype_doc_CATEGORY="Doc"
 libfreetype_doc_CONTENTS="usr/share/doc/${NAME}/html/"
 
