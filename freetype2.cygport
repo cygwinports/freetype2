@@ -12,10 +12,9 @@ SRC_URI="mirror://sourceforge/freetype/freetype-${VERSION}.tar.bz2
          mirror://sourceforge/freetype/ft2demos-${VERSION}.tar.bz2"
 SRC_DIR="freetype-${VERSION}"
 PATCH_URI="
-	https://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.3.0-enable-spr.patch
-	https://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.2.1-enable-valid.patch
-	https://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.6.5-libtool.patch
-	https://src.fedoraproject.org/cgit/rpms/freetype.git/plain/freetype-2.9-ftsmooth.patch
+	https://src.fedoraproject.org/rpms/freetype/raw/f29/f/freetype-2.3.0-enable-spr.patch
+	https://src.fedoraproject.org/rpms/freetype/raw/f29/f/freetype-2.2.1-enable-valid.patch
+	https://src.fedoraproject.org/rpms/freetype/raw/f29/f/freetype-2.6.5-libtool.patch
 "
 
 PKG_NAMES="${NAME}-demos libfreetype6 libfreetype-devel libfreetype-doc"
